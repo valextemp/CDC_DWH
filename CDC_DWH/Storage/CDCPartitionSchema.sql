@@ -1,0 +1,4 @@
+﻿CREATE PARTITION SCHEME [CDCPartitionSchema]
+    AS PARTITION [CDCPartitionFunc]
+    TO ([DATA_FG], [DATA_FG], [DATA_FG], [DATA_FG], [DATA_FG]);
+

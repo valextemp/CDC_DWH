@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>CDC_DWH</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{ac7dd43a-bcf8-4d37-9378-dc76c44c8fdf}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>CDC_DWH</RootNamespace>
+    <AssemblyName>CDC_DWH</AssemblyName>
+    <ModelCollation>1049,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
+    <DefaultFilegroup>DEFAULT_FG</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="stg\" />
+    <Folder Include="stg\Tables\" />
+    <Folder Include="arсh\" />
+    <Folder Include="arсh\Tables\" />
+    <Folder Include="log\" />
+    <Folder Include="log\Tables\" />
+    <Folder Include="dwh\" />
+    <Folder Include="dwh\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Storage\" />
+    <Folder Include="stg\Stored Procedures\" />
+    <Folder Include="log\Stored Procedures\" />
+    <Folder Include="dwh\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="0_Doc" />
+    <Folder Include="Database Triggers\" />
+    <Folder Include="0_ASTO_ZF_Stor_Proc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="stg\Tables\asto_DataValues_CT.sql" />
+    <Build Include="stg\Tables\asto_Rows_CT.sql" />
+    <Build Include="arсh\Tables\asto_DataValues_CT.sql" />
+    <Build Include="arсh\Tables\asto_Rows_CT.sql" />
+    <Build Include="log\Tables\Events.sql" />
+    <Build Include="log\Tables\AuditDDLEvents.sql" />
+    <Build Include="dwh\Tables\asto_DataValues_CT.sql" />
+    <Build Include="dwh\Tables\asto_Rows_CT.sql" />
+    <Build Include="dwh\Tables\asto_DataValues_CT_PT_free.sql" />
+    <Build Include="dwh\Tables\asto_Rows_CT_PT_free.sql" />
+    <Build Include="Storage\DEFAULT_FG.sql" />
+    <Build Include="Storage\INDEXES_FG.sql" />
+    <Build Include="Storage\ARCHIVE_FG.sql" />
+    <Build Include="Storage\LOGGING_FG.sql" />
+    <Build Include="Storage\DATA_FG.sql" />
+    <Build Include="stg\Stored Procedures\usp_Load_asto_DataValues_CT.sql" />
+    <Build Include="log\Stored Procedures\usp_Add_Log_Event.sql" />
+    <Build Include="stg\Stored Procedures\usp_Load_asto_Rows_CT.sql" />
+    <Build Include="stg\Stored Procedures\usp_Load_CDC_Data_Full_Cycle.sql" />
+    <Build Include="stg\Stored Procedures\usp_Etl_asto_DataValues_CT.sql" />
+    <Build Include="stg\Stored Procedures\usp_Etl_asto_Rows_CT.sql" />
+    <Build Include="dwh\Stored Procedures\usp_Load_DWH_asto_Rows_CT.sql" />
+    <Build Include="dwh\Stored Procedures\usp_Load_DWH_asto_DataValues_CT.sql" />
+    <Build Include="stg\Stored Procedures\usp_Copy_CDC_Data.sql" />
+    <Build Include="Storage\CDCPartitionFunc.sql" />
+    <Build Include="Storage\CDCPartitionSchema.sql" />
+    <Build Include="Security\arсh.sql" />
+    <Build Include="Security\dwh.sql" />
+    <Build Include="Security\log.sql" />
+    <Build Include="Security\stg.sql" />
+    <Build Include="ExtendedProperties.sql" />
+    <Build Include="stg\Stored Procedures\usp_ReLoad_from_arch_asto_Rows_CT.sql" />
+    <Build Include="Database Triggers\trg_audit_ddl_events.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="0_Doc\Readme.txt" />
+    <None Include="0_ASTO_ZF_Stor_Proc\usp_GetHistoryDataValuesByConfigurationRowId.sql" />
+  </ItemGroup>
+</Project>
