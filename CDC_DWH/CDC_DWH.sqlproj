@@ -111,6 +111,7 @@
     <Build Include="ExtendedProperties.sql" />
     <Build Include="stg\Stored Procedures\usp_ReLoad_from_arch_asto_Rows_CT.sql" />
     <Build Include="Database Triggers\trg_audit_ddl_events.sql" />
+    <Build Include="stg\Stored Procedures\usp_New_Feature.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="0_Doc\Readme.txt" />
